@@ -1,6 +1,6 @@
 <template>
   <Page>
-    <ActionBar title="Login" class="action-bar" />
+    <Topo />
     <FlexboxLayout flexDirection="column" justifyContent="center" class="full-height">
       <Image
         src="https://nixloc.com.br/wp-content/themes/nix-loc/images/logo_nixweb.png"
@@ -43,11 +43,14 @@
 </template>
 
 <script>
+import Topo from "../../../components/layout/Topo.vue";
+
 import Login from "@/components/modulos/adm/login/Login.js";
 
 import { mapGetters, mapActions, mapMutations, mapState } from "vuex";
 
 export default {
+  components: { Topo },
   name: "LoginView",
   data() {
     return {
@@ -59,7 +62,6 @@ export default {
   methods: {
     ...mapActions("generic", ["postApi"]),
     efetuarLogin() {
-    
       let params = {
         url: "https://localhost:44348/api/v1/adm/login/logar",
         obj: this.login,
@@ -76,6 +78,10 @@ export default {
 </script>
 
 <style lang="scss">
+.action-bar {
+  flat: true;
+}
+
 .border-bottom {
   border-bottom-width: 1;
   border-bottom-color: white;
